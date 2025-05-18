@@ -1,0 +1,22 @@
+[
+  {
+    "title": "University of Computer Studies, Yangon(UCSY)",
+    "year": "2017 — 2020",
+    "description": "Computer Science"
+  },
+  {
+    "title": "MMSIT",
+    "year": "2022",
+    "description": "Special Web Design Course"
+  },
+  {
+    "title": "Creative Coder Myanmar",
+    "year": "2023",
+    "description": "Vue.js + Firebase Course"
+  },
+  {
+    "title": "Brighter Myanmar",
+    "year": "2025(Current Teaching)",
+    "description": "Node.js + MongoDB + Flutter Course"
+  }
+]

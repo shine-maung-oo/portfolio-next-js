@@ -1,0 +1,37 @@
+[
+  {
+    "company": "Host Myanmar Software Solutions",
+    "duration": "01/2023 — Present",
+    "roles": [
+      {
+        "title": "As a Frontend Developer",
+        "duration": "01/2023 – 07/2023",
+        "responsibilities": [
+          "Designed and developed websites emphasizing intuitive UI/UX for diverse clients.",
+          "Developed and maintained university and government websites, ensuring seamless compatibility and performance across devices."
+        ]
+      },
+      {
+        "title": "As a Backend Developer",
+        "duration": "07/2023 – 01/2024",
+        "responsibilities": [
+          "Engineered server-side logic and databases, specializing in RESTful API development.",
+          "Ensured robust scalability, security, and performance for web applications."
+        ]
+      },
+      {
+        "title": "As a Fullstack Developer",
+        "duration": "Present",
+        "responsibilities": [
+          "Develops and maintains full-stack web applications, integrating frontend and backend components.",
+          "Collaborates with teams to define features, conduct code reviews, and ensure high application quality standards."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "Volunteer at Huawei Cloud Project",
+    "duration": "05/2018",
+    "description": "Participated as volunteer in Huawei Cloud Project for one mouth duration."
+  }
+]

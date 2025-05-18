@@ -1,0 +1,30 @@
+[
+  {
+    "title": "HTML & CSS",
+    "description": "Strong foundation in web design and responsive layouts."
+  },
+  {
+    "title": "Javascript",
+    "description": "Advanced knowledge, with experience in frameworks like React and Vue.js."
+  },
+  {
+    "title": "TypeScript",
+    "description": "Experience in building scalable web applications."
+  },
+  {
+    "title": "PHP",
+    "description": "Proficient in backend development using Laravel."
+  },
+  {
+    "title": "WordPress",
+    "description": "Proficient in creating and managing websites using WordPress, with experience in theme and plugin development, and customizing designs and functionality to meet client needs."
+  },
+  {
+    "title": "Bootstrap",
+    "description": "Proficient in using Bootstrap for responsive and modern web design."
+  },
+  {
+    "title": "Tailwind CSS",
+    "description": "Skilled in using Tailwind CSS for utility-first CSS framework to build custom designs quickly."
+  }
+]
