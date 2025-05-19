@@ -310,7 +310,7 @@ body {
 @media screen and (max-width: 992px) {
   .main-content article {
     height: max-content;
-    min-height: 500px;
+    min-height: 800px;
     overflow: hidden;
     position: relative;
   }
@@ -319,7 +319,7 @@ body {
 @media screen and (max-width: 767px) {
   .main-content article {
     height: max-content;
-    min-height: 450px;
+    min-height: 650px;
     overflow: hidden;
     position: relative;
   }
@@ -1701,7 +1701,8 @@ textarea.form-input::-webkit-resizer {
   }
 
   .avatar-box img {
-    width: 100%;
+    width: 118px !important;
+    height: 138px;
     transform: scale(1.35) translate(1px, 6px);
   }
 

@@ -19,22 +19,22 @@ const ProjectsClient: React.FC = () => {
     // Show loader for minimum 3 seconds
     const timer = setTimeout(() => {
       setShowLoading(false);
-    }, 2500);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [dispatch]);
 
   return (
     <article className="portfolio active">
+      <header>
+        <h2 className="h2 article-title">Projects</h2>
+      </header>
       {showLoading ? (
         <Loading />
       ) : error ? (
         <p className="text-red-500">Error: {error}</p>
       ) : (
         <>
-          <header>
-            <h2 className="h2 article-title">Projects</h2>
-          </header>
           <section className="projects">
             <ul className="project-list">
               {projects.map((project, index) => (

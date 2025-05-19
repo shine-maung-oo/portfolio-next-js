@@ -31,6 +31,18 @@
   color: #35c4f0;
 }
 
+@media screen and (max-width:992px) {
+  #load{
+    top: 45%;
+  }
+}
+
+@media screen and (max-width:767px) {
+  #load{
+    top: 40%;
+  }
+}
+
 #load div:nth-child(2) {
   animation-delay: 0.2s;
   -o-animation-delay: 0.2s;

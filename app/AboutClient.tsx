@@ -26,20 +26,20 @@ export default function AboutClient() {
     // Show loader for minimum 3 seconds
     const timer = setTimeout(() => {
       setShowLoading(false);
-    }, 2500);
+    }, 2000);
   }, [dispatch]);
   return (
     <>
       <article className="about active">
+        <header>
+          <h2 className="h2 article-title">About me</h2>
+        </header>
         {showLoading ? (
           <Loading />
         ) : error ? (
           <p className="text-red-500">Error: {error}</p>
         ) : (
           <>
-            <header>
-              <h2 className="h2 article-title">About me</h2>
-            </header>
             <section className="about-text">
               {aboutme.paragraphs.map((para, index) => (
                 <p key={index}>{para}</p>

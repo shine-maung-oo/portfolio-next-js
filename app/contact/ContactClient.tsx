@@ -70,22 +70,22 @@ const ContactClient: React.FC = () => {
     // Show loader for minimum 3 seconds
     const timer = setTimeout(() => {
       setShowLoading(false);
-    }, 2500);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [dispatch]);
   return (
     <>
       <article className="contact active">
+        <header>
+          <h2 className="h2 article-title">Contact</h2>
+        </header>
         {showLoading ? (
           <Loading />
         ) : error ? (
           <p className="text-red-500">Error: {error}</p>
         ) : (
           <>
-            <header>
-              <h2 className="h2 article-title">Contact</h2>
-            </header>
             <section className="contact-form">
               {showAlert && (
                 <div id="alertBox">
