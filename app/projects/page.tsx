@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const ProjectsClient = dynamic(() => import("./projectsClient"), {
+const ProjectsClient = dynamic(() => import("./ProjectsClient"), {
   ssr: true, 
 });
 

@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const ResumeClient = dynamic(() => import("./resumeClient"), { ssr: true });
+const ResumeClient = dynamic(() => import("./ResumeClient"), { ssr: true });
 
 export {metadata} from "./metadata";
 

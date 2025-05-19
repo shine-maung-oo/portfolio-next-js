@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-export default function aboutClient() {
+export default function AboutClient() {
   const dispatch = useAppDispatch();
   const { aboutme, skills, slideshow, loading, error } = useAppSelector(
     (state) => state.about

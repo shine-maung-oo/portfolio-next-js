@@ -11,6 +11,9 @@ import {
 } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import myPhoto from '@/public/images/my_photo.png';
+
 export const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname(); // This will re-render on route change
@@ -25,7 +28,7 @@ export const Sidebar: React.FC = () => {
       <aside className={`sidebar ${isOpen ? "active" : ""}`}>
         <div className="sidebar-info">
           <figure className="avatar-box">
-            <img src="/images/my_photo.png" alt="naoki" width="80" />
+            <Image src={myPhoto} alt="naoki" width={118} />
           </figure>
 
           <div className="info-content">

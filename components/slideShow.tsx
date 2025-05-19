@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 type SlideShowItem = {
@@ -13,10 +14,12 @@ type SlideShowProps = {
 const SlideShow: React.FC<SlideShowProps> = ({ data }) => {
   const renderIcons = () =>
     data.map((icon, index) => (
-      <img
+      <Image
         key={index}
         src={icon.src}
         alt={icon.alt}
+        width={50}
+        height={50}
         style={icon.rounded ? { borderRadius: 5 } : undefined}
       />
     ));

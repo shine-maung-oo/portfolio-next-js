@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
 
-const AboutClient = dynamic(() => import("./aboutClient"), { ssr: true });
+const AboutClient = dynamic(() => import("./AboutClient"), { ssr: true });
 
 export const metadata: Metadata = {
   title: "Shine Maung Oo",
