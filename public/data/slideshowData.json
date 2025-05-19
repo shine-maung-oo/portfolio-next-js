@@ -10,6 +10,9 @@
   { "src": "/images/wordpress.svg", "alt": "WordPress" },
   { "src": "/images/vuejs.svg", "alt": "Vue.js" },
   { "src": "/images/react.svg", "alt": "React" },
+  { "src": "/images/nextjs.svg", "alt": "Next.js" },
+  { "src": "/images/nodejs.svg", "alt": "Node.js" },
+  { "src": "/images/redux.svg", "alt": "Redux" },
   { "src": "/images/github.svg", "alt": "GitHub" },
   { "src": "/images/figma.svg", "alt": "Figma" }
 ]

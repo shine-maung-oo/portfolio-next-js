@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Email",
+    "value": "shinemaungoo.dev@gmail.com",
+    "link": "mailto:shinemaungoo.dev@gmail.com"
+  },
+  {
+    "title": "Phone",
+    "value": "+959 979092815",
+    "link": "tel:+09979092815"
+  },
+  {
+    "title": "Github",
+    "value": "shine-maung-oo",
+    "link": "https://github.com/shine-maung-oo"
+  },
+  {
+    "title": "LinkedIn",
+    "value": "shinemaungoo",
+    "link": "https://www.linkedin.com/in/shinemaungoo"
+  }
+]

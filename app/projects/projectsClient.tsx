@@ -2,74 +2,65 @@
 
 import React, { useEffect, useState } from "react";
 import { IoArrowForwardOutline } from "react-icons/io5";
-import { fetchProjects, Project } from "@/api/project";
-
-declare global {
-  interface Window {
-    Email: any;
-  }
-}
-
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { fetchProjects } from "@/store/projectSlice";
+import { Loading } from "@/components/loading";
 const ProjectsClient: React.FC = () => {
-  const [projectData, setProjectData] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
+  const { projects, loading, error } = useAppSelector(
+    (state) => state.projects
+  );
+  const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
-    const loadProjects = async () => {
-      try {
-        const data = await fetchProjects();
-        setProjectData(data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+    dispatch(fetchProjects());
 
-    loadProjects();
-  }, []);
-
-  useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    // Show loader for minimum 3 seconds
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 2500);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+    return () => clearTimeout(timer);
+  }, [dispatch]);
 
   return (
-    <>
-      <article className="portfolio active">
-        <header>
-          <h2 className="h2 article-title">Projects</h2>
-        </header>
-
-        <section className="projects">
-          <ul className="project-list">
-            {projectData.map((project: Project, index: number) => (
-              <li className="project-item active" key={index}>
-                <a href={project.url} target="_blank">
-                  <figure className="project-img">
-                    <div className="project-item-icon-box">
-                      <IoArrowForwardOutline />
-                    </div>
-
-                    <img
-                      alt={project.title}
-                      src={project.image}
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 className="project-title">{project.title}</h3>
-                  <span>{project.languages}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </article>
-    </>
+    <article className="portfolio active">
+      {showLoading ? (
+        <Loading />
+      ) : error ? (
+        <p className="text-red-500">Error: {error}</p>
+      ) : (
+        <>
+          <header>
+            <h2 className="h2 article-title">Projects</h2>
+          </header>
+          <section className="projects">
+            <ul className="project-list">
+              {projects.map((project, index) => (
+                <li className="project-item active" key={index}>
+                  <a href={project.url} target="_blank">
+                    <figure className="project-img">
+                      <div className="project-item-icon-box">
+                        <IoArrowForwardOutline />
+                      </div>
+                      <img
+                        alt={project.title}
+                        src={project.image}
+                        loading="lazy"
+                      />
+                    </figure>
+                    <h3 className="project-title">{project.title}</h3>
+                    <span>{project.languages}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      )}
+    </article>
   );
 };
+
 export default ProjectsClient;

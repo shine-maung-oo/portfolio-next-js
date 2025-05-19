@@ -1,5 +1,8 @@
 "use client";
 
+import { Loading } from "@/components/loading";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { fetchContacts } from "@/store/contactSlice";
 import React, { useEffect, useState } from "react";
 import { IoCloseCircleOutline, IoPaperPlane } from "react-icons/io5";
 
@@ -15,8 +18,13 @@ const ContactClient: React.FC = () => {
   const [message, setMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-
   const formValid = name !== "" && email !== "" && message !== "";
+  const [showLoading, setShowLoading] = useState(true);
+
+  const dispatch = useAppDispatch();
+  const { contacts, loading, error } = useAppSelector(
+    (state) => state.contacts
+  );
 
   const hideAlert = () => {
     setShowAlert(false);
@@ -57,113 +65,104 @@ const ContactClient: React.FC = () => {
   };
 
   useEffect(() => {
+    dispatch(fetchContacts());
     window.scrollTo(0, 0);
-  }, []);
+    // Show loader for minimum 3 seconds
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, [dispatch]);
   return (
     <>
       <article className="contact active">
-        <header>
-          <h2 className="h2 article-title">Contact</h2>
-        </header>
+        {showLoading ? (
+          <Loading />
+        ) : error ? (
+          <p className="text-red-500">Error: {error}</p>
+        ) : (
+          <>
+            <header>
+              <h2 className="h2 article-title">Contact</h2>
+            </header>
+            <section className="contact-form">
+              {showAlert && (
+                <div id="alertBox">
+                  <span id="alertMessage">{alertMessage}</span>
+                  <span className="closeBtn" onClick={hideAlert}>
+                    <IoCloseCircleOutline />
+                  </span>
+                </div>
+              )}
 
-        <section className="contact-form">
-          {showAlert && (
-            <div id="alertBox">
-              <span id="alertMessage">{alertMessage}</span>
-              <span className="closeBtn" onClick={hideAlert}>
-                <IoCloseCircleOutline />
-              </span>
-            </div>
-          )}
-
-          <h3 className="h3 form-title">Contact Me</h3>
-          <div className="input-wrapper">
-            <div className="contact-item">
-              <div className="contact-info">
-                <p className="contact-title">Email</p>
-                <a
-                  href="mailto:shinemaungoo.dev@gmail.com"
-                  className="contact-link"
-                >
-                  shinemaungoo.dev@gmail.com
-                </a>
+              <h3 className="h3 form-title">Contact Me</h3>
+              <div className="input-wrapper">
+                {contacts.map((item, index) => (
+                  <div className="contact-item" key={index}>
+                    <div className="contact-info">
+                      <p className="contact-title">{item.title}</p>
+                      <a
+                        href={item.link}
+                        className="contact-link"
+                        target={
+                          item.link.startsWith("http") ? "_blank" : "_self"
+                        }
+                        rel={
+                          item.link.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        title={
+                          item.title === "LinkedIn"
+                            ? "Shine Maung Oo"
+                            : undefined
+                        }
+                      >
+                        {item.value}
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
 
-            <div className="contact-item">
-              <div className="contact-info">
-                <p className="contact-title">Phone</p>
-                <a href="tel:+09979092815" className="contact-link">
-                  +959 979092815
-                </a>
-              </div>
-            </div>
+              <h3 className="h3 form-title">Send Me A Message</h3>
+              <form onSubmit={submitForm} className="form">
+                <div className="input-wrapper">
+                  <input
+                    type="text"
+                    className="form-input"
+                    placeholder="Full name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                  <input
+                    type="email"
+                    className="form-input"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
 
-            <div className="contact-item">
-              <div className="contact-info">
-                <p className="contact-title">Github</p>
-                <a
-                  href="https://github.com/shine-maung-oo"
-                  className="contact-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  shine-maung-oo
-                </a>
-              </div>
-            </div>
+                <textarea
+                  className="form-input"
+                  placeholder="Your Message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                ></textarea>
 
-            <div className="contact-item">
-              <div className="contact-info">
-                <p className="contact-title">LinkedIn</p>
-                <a
-                  href="https://www.linkedin.com/in/shinemaungoo"
-                  className="contact-link"
-                  target="_blank"
-                  title="Shine Maung Oo"
-                  rel="noopener noreferrer"
-                >
-                  shinemaungoo
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <h3 className="h3 form-title">Send Me A Message</h3>
-          <form onSubmit={submitForm} className="form">
-            <div className="input-wrapper">
-              <input
-                type="text"
-                className="form-input"
-                placeholder="Full name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <input
-                type="email"
-                className="form-input"
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-
-            <textarea
-              className="form-input"
-              placeholder="Your Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            ></textarea>
-
-            <button className="form-btn" disabled={!formValid}>
-              <IoPaperPlane />
-              <span>Send Message</span>
-            </button>
-          </form>
-        </section>
+                <button className="form-btn" disabled={!formValid}>
+                  <IoPaperPlane />
+                  <span>Send Message</span>
+                </button>
+              </form>
+            </section>
+          </>
+        )}
       </article>
     </>
   );

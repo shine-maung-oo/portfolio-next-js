@@ -263,47 +263,66 @@ body {
   #REUSED STYLE
 \*-----------------------------------*/
 
-.main-content article {
-  height: 733px;
-  overflow-y: scroll;
-  scrollbar-width: none;
-  scrollbar-color: var(--vegas-gold) transparent; /* Thumb color and track color */
-  scroll-behavior: smooth;
-  transition: all 0.3s ease-in-out;
-}
-/* WebKit (Chrome, Edge, Safari) */
-.main-content article::-webkit-scrollbar {
-  width: 1px;
-  background: transparent;
+@media screen and (min-width: 993px) {
+  .main-content article {
+    height: 733px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scrollbar-color: var(--vegas-gold) transparent; /* Thumb color and track color */
+    scroll-behavior: smooth;
+    transition: all 0.3s ease-in-out;
+  }
+  /* WebKit (Chrome, Edge, Safari) */
+  .main-content article::-webkit-scrollbar {
+    width: 1px;
+    background: transparent;
+  }
+
+  .main-content article::-webkit-scrollbar-track {
+    background: transparent; /* Or use a light color if you want */
+  }
+
+  .main-content article.contact {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+  }
+
+  .main-content article.contact::-webkit-scrollbar {
+    display: none !important; /* Chrome, Safari, Opera */
+  }
+
+  .main-content article:hover {
+    scrollbar-width: thin;
+  }
+
+  .main-content article::-webkit-scrollbar-thumb {
+    background-color: var(--vegas-gold); /* Scrollbar color */
+    border-radius: 20px;
+  }
+  /* Hide scrollbar buttons/arrows (only on WebKit-based browsers) */
+  .main-content article::-webkit-scrollbar-button {
+    display: none;
+    height: 0;
+    width: 0;
+  }
 }
 
-.main-content article::-webkit-scrollbar-track {
-  background: transparent; /* Or use a light color if you want */
+@media screen and (max-width: 992px) {
+  .main-content article {
+    height: max-content;
+    min-height: 500px;
+    overflow: hidden;
+    position: relative;
+  }
 }
 
-.main-content article.contact {
-  scrollbar-width: none !important; /* Firefox */
-  -ms-overflow-style: none !important;  /* Internet Explorer 10+ */
-}
-
-.main-content article.contact::-webkit-scrollbar {
-  display: none !important; /* Chrome, Safari, Opera */
-}
-
-.main-content article:hover {
-  scrollbar-width: thin;
-}
-
-
-.main-content article::-webkit-scrollbar-thumb {
-  background-color: var(--vegas-gold); /* Scrollbar color */
-  border-radius: 20px;
-}
-/* Hide scrollbar buttons/arrows (only on WebKit-based browsers) */
-.main-content article::-webkit-scrollbar-button {
-  display: none;
-  height: 0;
-  width: 0;
+@media screen and (max-width: 767px) {
+  .main-content article {
+    height: max-content;
+    min-height: 450px;
+    overflow: hidden;
+    position: relative;
+  }
 }
 
 .sidebar,

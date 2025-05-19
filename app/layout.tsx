@@ -5,7 +5,8 @@ import "@/public/assets/css/style.css";
 import { Sidebar } from "@/components/sidebar";
 import { Navbar } from "@/components/navbar";
 import { Download } from "@/components/download";
-import Script from "next/script";
+import { ReduxProvider } from "@/store/reduxProvider";
+import HelperScript from "@/utils/helperScript";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -34,33 +35,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
-        {/* Google Analytics Script */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-975S33NJ93"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-975S33NJ93');
-          `}
-        </Script>
-
-        {/* SMTP.js */}
-        <Script
-          src="https://smtpjs.com/v3/smtp.js"
-          strategy="beforeInteractive"
-        />
-        <main>
-          <Sidebar />
-          <div className="main-content">
-            <Navbar />
-            {children}
-            <Download />
-          </div>
-        </main>
+        <HelperScript />
+        <ReduxProvider>
+          <main>
+            <Sidebar />
+            <div className="main-content">
+              <Navbar />
+              {children}
+              <Download />
+            </div>
+          </main>
+        </ReduxProvider>
       </body>
     </html>
   );
