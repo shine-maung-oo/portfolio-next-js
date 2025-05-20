@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar";
 import { Download } from "@/components/download";
 import { ReduxProvider } from "@/store/reduxProvider";
 import HelperScript from "@/utils/helperScript";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -59,6 +60,7 @@ export default function RootLayout({
             <div className="main-content">
               <Navbar />
               {children}
+              <SpeedInsights />
               <Download />
             </div>
           </main>
