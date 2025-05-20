@@ -7,9 +7,10 @@ export const Download = () => {
     <>
       <div className="download">
         <a
-          href="/pdf/Shine_Maung_Oo_CV.pdf"
+          href="/cv/Shine_Maung_Oo_Web_Developer_CV.pdf"
           className="contact-link"
           target="_blank"
+          download={true}
         >
           <div className="download-icon-box">
             <IoDownloadOutline />

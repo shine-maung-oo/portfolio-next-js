@@ -28,7 +28,7 @@ export const Sidebar: React.FC = () => {
       <aside className={`sidebar ${isOpen ? "active" : ""}`}>
         <div className="sidebar-info">
           <figure className="avatar-box">
-            <Image src={myPhoto} alt="naoki" width={80} />
+            <Image src={myPhoto} alt="naoki" width={138} />
           </figure>
 
           <div className="info-content">

@@ -1,22 +1,14 @@
+'use client';
+
 import React from "react";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import Script from "next/script";
 
 const HelperScript = () => {
   return (
     <>
-      {/* Google Analytics Script */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-975S33NJ93"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-975S33NJ93');
-          `}
-      </Script>
+      {/* Google Analytics via nextjs-google-analytics */}
+      <GoogleAnalytics trackPageViews gaMeasurementId="G-975S33NJ93" />
 
       {/* SMTP.js */}
       <Script

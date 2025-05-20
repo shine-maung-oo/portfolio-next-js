@@ -534,7 +534,14 @@ main {
 }
 
 .avatar-box img {
+  height: auto;
   transform: scale(1.35) translate(1px, 4px);
+}
+
+@media screen and (max-width: 579px) {
+  .avatar-box img {
+    width: 80px;
+  }
 }
 
 .info-content .name {
@@ -1702,7 +1709,7 @@ textarea.form-input::-webkit-resizer {
 
   .avatar-box img {
     width: 118px !important;
-    height: 138px;
+    height: 138px !important;
     transform: scale(1.35) translate(1px, 6px);
   }
 
@@ -2378,9 +2385,9 @@ textarea.form-input::-webkit-resizer {
 }
 
 .download {
-  position: fixed;
-  bottom: 120px;
-  right: 30px;
+  position: absolute;
+  bottom: 5%;
+  right: -10%;
   z-index: 999;
 }
 
